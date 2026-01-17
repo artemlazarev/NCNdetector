@@ -14,7 +14,15 @@ services:
       DRY_RUN: True
     volumes:
       - ${NEXTCLOUD_DIR}:/data/images:ro
-
+  moondream2:
+    container_name: vlmserver
+    build: ./services/vlmserver
+    runtime: nvidia
+    #network_mode: "host"
+    volumes:
+      - ./hub:/root/.cache/huggingface/hub
+    tty: true
+    stdin_open: true
 
 
 
