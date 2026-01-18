@@ -1,28 +1,30 @@
 services:
-  worker:
-    build: ./services/worker
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
-              count: all
-    environment:
-      NEXTCLOUD_USERNAME: ${NEXTCLOUD_USERNAME}
-      NEXTCLOUD_PASSWORD: ${NEXTCLOUD_PASSWORD}
-      NEXTCLOUD_URL: ${NEXTCLOUD_URL}
-      DRY_RUN: True
-    volumes:
-      - ${NEXTCLOUD_DIR}:/data/images:ro
-  moondream2:
+#  worker:
+#    build: ./services/worker
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - capabilities: [gpu]
+#              count: all
+#    environment:
+#      NEXTCLOUD_USERNAME: ${NEXTCLOUD_USERNAME}
+#      NEXTCLOUD_PASSWORD: ${NEXTCLOUD_PASSWORD}
+#      NEXTCLOUD_URL: ${NEXTCLOUD_URL}
+#      DRY_RUN: True
+#    volumes:
+#      - ${NEXTCLOUD_DIR}:/data/images:ro
+  vlmserver:
     container_name: vlmserver
     build: ./services/vlmserver
     runtime: nvidia
     #network_mode: "host"
+    ports:
+     - 2020:2020
     volumes:
       - ./hub:/root/.cache/huggingface/hub
-    tty: true
-    stdin_open: true
+    tty: false
+    stdin_open: false
 
 
 
