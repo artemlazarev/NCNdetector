@@ -72,7 +72,7 @@ def process_dir(directory):
             nsfw = score > SAFE_T
             if nsfw:
                 tags = detections
-                add_tag_to_image(node.user_path, )
+                add_tag_to_image(node)
                 print(f"nsfw score = ${score} in : {node.user_path}")
                 print(f"detections = ${detections}")
 

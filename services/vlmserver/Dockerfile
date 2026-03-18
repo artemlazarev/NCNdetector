@@ -10,6 +10,6 @@ RUN git clone --depth 1 https://huggingface.co/spaces/vikhyatk/moondream2 \
     && pip install --no-cache-dir spaces flash-attn
 
 #CMD [ "moondream-station"]
-MD [ "bash", "-c", "python app.py" ]
+CMD [ "bash", "-c", "python app.py" ]
 
 
